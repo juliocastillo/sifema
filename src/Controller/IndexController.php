@@ -5,15 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SifeController extends AbstractController
+class IndexController extends AbstractController
 {
     /**
-     * @Route("/homepage", name="sife_homepage")
+     * @Route("/index", name="app_index")
      */
     public function index()
     {
-        return $this->render('sife/index.html.twig', [
-            'controller_name' => 'SifeController',
+        return $this->render('index/index.html.twig', [
+            'controller_name' => 'IndexController',
         ]);
     }
 }

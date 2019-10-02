@@ -6,8 +6,11 @@
  */
 
 // any CSS you require will output into a single css file (app.css in this case)
+require('../css/bootstrap.min.css');
+require('../js/popper.min.js');
+require('../js/jquery.min.js');
+require('../js/bootstrap.min.js');
 require('../css/app.css');
-
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
 
