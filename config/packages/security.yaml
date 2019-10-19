@@ -37,3 +37,4 @@ security:
         #- { path: ^/app_homepage, roles: ROLE_ADMIN }
         #- { path: ^/homepage, roles: ROLE_USER }
         - { path: ^/index, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
