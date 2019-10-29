@@ -31,3 +31,15 @@ services:
         arguments: [~, App\Entity\Users, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Users }
+
+    admin.mntMenu:
+        class: App\Admin\mntMenuAdmin
+        arguments: [~, App\Entity\MntMenu, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Menu }
+
+    admin.mntDetalleMenu:
+        class: App\Admin\mntDetalleMenuAdmin
+        arguments: [~, App\Entity\MntDetalleMenu, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: DetalleMenu , show_in_dashboard: false}

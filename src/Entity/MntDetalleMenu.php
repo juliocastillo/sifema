@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MntMenu1
+ * MntDetalleMenu
  *
- * @ORM\Table(name="mnt_menu1", indexes={@ORM\Index(name="IDX_473E51A04EF458F6", columns={"id_users_add"}), @ORM\Index(name="IDX_473E51A0DBD0331B", columns={"id_users_modify"})})
+ * @ORM\Table(name="mnt_detalle_menu", indexes={@ORM\Index(name="IDX_65C06A16F6252691", columns={"id_menu"}), @ORM\Index(name="IDX_65C06A164EF458F6", columns={"id_users_add"}), @ORM\Index(name="IDX_65C06A16DBD0331B", columns={"id_users_modify"})})
  * @ORM\Entity
  */
-class MntMenu1
+class MntDetalleMenu
 {
     /**
      * @var int
@@ -18,23 +18,16 @@ class MntMenu1
      * @ORM\Column(name="id", type="integer", nullable=false, options={"comment"="llave primaria"})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="mnt_menu1_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="mnt_detalle_menu_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="menu", type="string", length=255, nullable=true, options={"comment"="numbre del testo a mostrar de menu nivel 1"})
+     * @ORM\Column(name="submenu", type="string", length=255, nullable=true, options={"comment"="text a mostrar menu de nivel 2"})
      */
-    private $menu;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="orden", type="smallint", nullable=true, options={"comment"="ordenar las opciones del menu"})
-     */
-    private $orden;
+    private $submenu;
 
     /**
      * @var bool|null
@@ -42,6 +35,13 @@ class MntMenu1
      * @ORM\Column(name="activo", type="boolean", nullable=true, options={"comment"="activo o no"})
      */
     private $activo;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="orden", type="smallint", nullable=true, options={"comment"="ordenar las opciones del menu"})
+     */
+    private $orden;
 
     /**
      * @var string|null
@@ -63,6 +63,17 @@ class MntMenu1
      * @ORM\Column(name="date_modify", type="datetime", nullable=true)
      */
     private $dateModify;
+
+    /**
+     * @var \MntMenu
+     *
+     * @ORM\ManyToOne(targetEntity="MntMenu", inversedBy="detalleMenu")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_menu", referencedColumnName="id")
+     * })
+     */
+    private $idMenu;
+
 
     /**
      * @var \Users
@@ -89,26 +100,14 @@ class MntMenu1
         return $this->id;
     }
 
-    public function getMenu(): ?string
+    public function getSubmenu(): ?string
     {
-        return $this->menu;
+        return $this->submenu;
     }
 
-    public function setMenu(?string $menu): self
+    public function setSubmenu(?string $submenu): self
     {
-        $this->menu = $menu;
-
-        return $this;
-    }
-
-    public function getOrden(): ?int
-    {
-        return $this->orden;
-    }
-
-    public function setOrden(?int $orden): self
-    {
-        $this->orden = $orden;
+        $this->submenu = $submenu;
 
         return $this;
     }
@@ -121,6 +120,18 @@ class MntMenu1
     public function setActivo(?bool $activo): self
     {
         $this->activo = $activo;
+
+        return $this;
+    }
+
+    public function getOrden(): ?int
+    {
+        return $this->orden;
+    }
+
+    public function setOrden(?int $orden): self
+    {
+        $this->orden = $orden;
 
         return $this;
     }
@@ -157,6 +168,18 @@ class MntMenu1
     public function setDateModify(?\DateTimeInterface $dateModify): self
     {
         $this->dateModify = $dateModify;
+
+        return $this;
+    }
+
+    public function getIdMenu(): ?MntMenu
+    {
+        return $this->idMenu;
+    }
+
+    public function setIdMenu(?MntMenu $idMenu): self
+    {
+        $this->idMenu = $idMenu;
 
         return $this;
     }
