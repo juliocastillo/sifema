@@ -19,8 +19,8 @@ final class MntDetalleMenuAdmin extends AbstractAdmin
       $formMapper->add('submenu', TextType::class)
       ->add('url', TextType::class)
       ->add('orden', integerType::class)
-      ->add('activo', CheckboxType::class)
-      ->add('url', TextType::class);
+      ->add('url', TextType::class)
+      ->add('activo', CheckboxType::class, array('label' => 'Activo', 'required' => FALSE));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
